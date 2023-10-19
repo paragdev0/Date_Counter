@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>180-Day Countdown</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.countdown {
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+}
+
+.counter {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.days {
+  font-size: 24px;
+}
+
+    </style>
+    <script>
+        // Set the target date 180 days from today
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 180);
+
+// Function to update the countdown
+function updateCountdown() {
+  const currentDate = new Date();
+  const timeDifference = targetDate - currentDate;
+  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+  const counterElement = document.getElementById("counter");
+  counterElement.textContent = daysRemaining;
+
+  if (daysRemaining <= 0) {
+    counterElement.textContent = "0";
+  }
+}
+
+// Initial call to update the countdown
+updateCountdown();
+
+// Update the countdown every second
+setInterval(updateCountdown, 1000);
+
+    </script>
+</head>
+<body>
+    <div class="countdown">
+        <div class="counter" id="counter">180</div>
+        <div class="days">days remaining</div>
+    </div>
+</body>
+</html>
